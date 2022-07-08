@@ -32,5 +32,10 @@ variable "config" {
 
     domain_name         = optional(string)
     acm_certificate_arn = optional(string)
+
+    logfiles = optional(set(object({
+      path            = string
+      datetime_format = optional(string)
+    })))
   })
 }

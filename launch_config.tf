@@ -73,6 +73,8 @@ resource "aws_launch_configuration" "this" {
     aws_region  = local.region_name
     volumes     = local.config.volumes
     commands    = local.config.init_commands
+    log_group   = aws_cloudwatch_log_group.awslogs.name
+    logfiles    = local.config.logfiles
   })
 
   root_block_device {
@@ -86,14 +88,10 @@ resource "aws_launch_configuration" "this" {
       device_name           = ebs_block_device.value.device_name
       delete_on_termination = true
       encrypted             = true
-      # kms_key_id = 
-      volume_size = ebs_block_device.value.size
-      volume_type = ebs_block_device.value.type
-      iops        = ebs_block_device.value.iops
-      throughput  = ebs_block_device.value.throughput
-      # tags = merge(local.default_tags, {
-      #   instance = "${local.name_prefix}instance"
-      # })
+      volume_size           = ebs_block_device.value.size
+      volume_type           = ebs_block_device.value.type
+      iops                  = ebs_block_device.value.iops
+      throughput            = ebs_block_device.value.throughput
     }
   }
 
