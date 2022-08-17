@@ -21,7 +21,7 @@ locals {
     }
     ubuntu = {
       owner    = "099720109477" # Canonical
-      name     = "ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"
+      name     = "ubuntu/images/hvm-ssd/ubuntu*"
       userdata = "ubuntu.sh"
     }
   }
