@@ -1,12 +1,5 @@
 locals {
-  config = defaults(var.config, {
-    ami                  = "amazon_linux_2"
-    min_size             = 1
-    max_size             = 1
-    desired_capacity     = 1
-    enable_load_balancer = true
-    health_check         = "/health"
-  })
+  config = var.config
 
   ami = {
     amazon_linux_2 = {

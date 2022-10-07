@@ -52,6 +52,11 @@ datetime_format=
 log_group_name=${log_group}
 log_stream_name={instance_id}/var/log/cloud-init-output.log
 
+[/var/lib/cloud/instance/user-data.txt]
+file=/var/lib/cloud/instance/user-data.txt
+log_group_name=${log_group}
+log_stream_name={instance_id}/user-data.txt
+
 %{ for logfile in logfiles ~}
 [${logfile.path}]
 file=${logfile.path}
